@@ -23,7 +23,8 @@ namespace ActivityPlanner
         List<Activity> allActivities = new List<Activity>();
         List<Activity> addedActivities = new List<Activity>();
         List<Activity> filteredActivity = new List<Activity>();
-
+        
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -31,6 +32,7 @@ namespace ActivityPlanner
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            
             // Create activity objects
             Activity land1 = new Activity("Mountain Climbing", new DateTime(2019, 06, 09), 20.00, "Instructor led group mountain climbing to local mountains.", TypeOfActivity.Land);
             Activity land2 = new Activity("Biking", new DateTime(2019, 06, 02), 30.99, "Instructor led half day biking. All equipment provided.", TypeOfActivity.Land);
@@ -74,12 +76,17 @@ namespace ActivityPlanner
             // Checks for if any activities are selected
             if (chosenActivity != null)
             {
+                
+                
                 // Moves selected activity to the right box and left box
                 allActivities.Remove(chosenActivity);
-                addedActivities.Add(chosenActivity);
-                
+                addedActivities.Add(chosenActivity);                
+                tblkDescription.Text = chosenActivity.Description; // only appears when it is selected and brought over to the right box
 
+                
                 refreshScreen();
+                //Could not get total cost to appear
+                //Could not get date conflict to work 
             }
             else
             {
